@@ -1,0 +1,7 @@
+node_modules
+dist
+/local
+db_data
+logs
+local
+*-local.yml

@@ -1,0 +1,59 @@
+version: '3.7'
+
+networks:
+  DoorSuisse:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  mysql:
+    container_name: door-suisse-mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: door_suisse_db
+      MYSQL_USER: door_suisse_user
+      MYSQL_PASSWORD: door_suisse_passowrd
+      MYSQL_ROOT_PASSWORD: door_suisse_passowrd
+    volumes:
+      - ./db_data:/var/lib/mysql
+    networks:
+      - DoorSuisse
+    logging:
+      options:
+        max-size: 100m
+    ports:
+      - 13306:3306
+
+  admin:
+    container_name: door-suisse-admin
+    build:
+      context: ./../door-suisse-admin
+      args:
+        - APP_BE_ROOT=https://door-suisse-be:8080
+    logging:
+      options:
+        max-size: 100m
+    ports:
+      - 18081:8080
+    networks:
+      - DoorSuisse
+
+  door-suisse-be:
+    container_name: door-suisse-be
+    build:
+      context: ./../door-suisse-be
+    volumes:
+      - ./configurations/be/dev:/usr/src/app/env/dev
+      - ./logs/door-suisse-be:/usr/src/app/env/logs
+    environment:
+      - CONFIG_FILE_PATH=/usr/src/app/env/dev/config.json
+    logging:
+      options:
+        max-size: 100m
+    ports:
+      - 18082:8080
+    networks:
+      - DoorSuisse
