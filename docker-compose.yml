@@ -1,0 +1,48 @@
+version: '3.7'
+
+networks:
+  YoutubeShare:
+    ipam:
+      config:
+        - subnet: 172.8.0.0/24
+
+services:
+  mysql:
+    container_name: youtube-share-db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: youtube-share-db
+      MYSQL_USER: youtube_share_user
+      MYSQL_PASSWORD: youtube_share_password
+      MYSQL_ROOT_PASSWORD: youtube_share_password
+    volumes:
+      - ./db_data:/var/lib/mysql
+    ports:
+      - 13306:3306
+    networks:
+      - YoutubeShare
+
+  backend:
+    container_name: youtube-share-be
+    build:
+      context: ./../youtube-share-be
+    volumes:
+      - ./configurations/be/dev:/usr/app/local
+    ports:
+      - 13002:8080
+    networks:
+      - YoutubeShare
+
+  frontend:
+    container_name: youtube-share-fe
+    build:
+      context: ./../youtube-share-fe
+      args:
+        # Access dirrectly to expose port from client
+        - REACT_APP_BE_ROOT=http://localhost:13002
+    ports:
+      - 13001:8080
+    networks:
+      - YoutubeShare
