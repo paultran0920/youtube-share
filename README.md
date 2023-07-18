@@ -85,10 +85,20 @@ Then open your browser and navigate to [http://localhost:13001/#/login](http://l
 
 <img src='./images/login.png' alt='Login screen'>
 
-Login with one of the above users and explore the application. Have fun 🕺
+Login with one of the [above users](#database-migration) and explore the application. Have fun 🕺
 
-# DEMO/How to use this application
+# How to use this application
+## See this video for application features
 [![Watch the video](https://github.com/paultran0920/youtube-share/blob/master/images/play-video.png)](https://www.youtube.com/watch?v=RODQhnuAPb8)
+
+## Live DEMO
+I deployed also this application on a free server. It will be suspended if inactive so please wait for awhile to bring it back if you open it
+
+Open [Youtube Video Sharing](https://youtubeshare-web.onrender.com)
+
+See [Database Migration](#database-migration) for user email and password
+
+**TIP:** You should re-open the application after login to unsure that the ws work correctly.
 
 # Development
 To configure this project for development on your local, you need to do some additional steps.
