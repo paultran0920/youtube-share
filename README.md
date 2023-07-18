@@ -1,5 +1,5 @@
 # App Introduction
-The YoutubeSharing is a simple application that allow the users share there interesting Youtube videos across platform. Once a user shared a new video, that video will be nofified to all online users of the platform.
+The YoutubeSharing is a simple application that allows users to share their interesting Youtube videos across the platform. Once a user shares a new video, that video will be nofified to all online users of the platform.
 
 # Prerequisites
 You need:
@@ -12,7 +12,7 @@ You need:
 # Setup YoutubeShare project on local
 ## Checkout projects
 
-**Step 1:** Create a root folder for YoutubeShare project. I called it as `PROJ_HOME`
+**Step 1:** Create a root folder for YoutubeShare project. I called it `PROJ_HOME`
 
 **Step 2:** Checkout the projects
 
@@ -92,13 +92,13 @@ Login with one of the [above users](#database-migration) and explore the applica
 [![Watch the video](https://github.com/paultran0920/youtube-share/blob/master/images/play-video.png)](https://www.youtube.com/watch?v=RODQhnuAPb8)
 
 ## Live DEMO
-I deployed also this application on a free server. It will be suspended if inactive so please wait for awhile to bring it back if you open it
+I also deployed this application on a free server. It will be suspended if inactive so please wait for a while to bring it back if you open it
 
 Open [Youtube Video Sharing](https://youtubeshare-web.onrender.com)
 
 See [Database Migration](#database-migration) for user email and password
 
-**TIP:** You should re-open the application after login to unsure that the ws work correctly.
+**TIP:** You should re-open the application after login to ensure that the ws work correctly.
 
 # Development
 To configure this project for development on your local, you need to do some additional steps.
@@ -141,7 +141,7 @@ yarn test:cov
 
 ### Run Integration/E2E Test
 See the scripts in `package.json` file
-For the e2e test, because it will start a `real` environment for testing so maybe it will take longer than UT and not stable if comparing to UT.
+For the e2e test, because it will start a `real` environment for testing so maybe it will take longer than UT and not stable if compared to UT.
 
 I prepared some [E2E Test here](https://github.com/paultran0920/youtube-share-be/blob/master/test-e2e/youtube.e2e-spec.ts), you can take a look for more detail if needed.
 
